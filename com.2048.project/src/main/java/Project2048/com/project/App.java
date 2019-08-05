@@ -1,14 +1,18 @@
 package Project2048.com.project;
 
-/**
- * Hello world!
- *
- */
+
+
+/*
+ *  input deve prendere la matrice da DL
+ * */
 public class App 
 {
     public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-        System.out.println("Si prorpiu bruttu!!");
+    {        
+    	Finestra finestra = new Finestra();
+    	System.out.println("Main Presente!!!");
+    	Matrice matrice =new Matrice();
+    	
+        finestra.add(matrice);
     }
 }
