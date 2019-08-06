@@ -10,9 +10,9 @@ public class App
     public static void main( String[] args )
     {        
     	Finestra finestra = new Finestra();
-    	System.out.println("Main Presente!!!");
-    	Matrice matrice =new Matrice();
+     	Matrice matrice =new Matrice();
     	
         finestra.add(matrice);
+        finestra.repaint();
     }
 }
