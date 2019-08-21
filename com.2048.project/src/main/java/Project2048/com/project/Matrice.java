@@ -41,7 +41,7 @@ public class Matrice extends JPanel {
 		setLayout(odiolaguijava);
 
 		text1 = new JLabel[4][4];
-		text1_back_copy = new JLabel[4][4]; //TODO da inizializzare vedi text1!! 
+		text1_back_copy = new JLabel[4][4];
 		//questa matrice mi serve per undo!
 
 		for (int i = 0; i < text1.length; i++) {
