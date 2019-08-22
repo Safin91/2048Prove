@@ -42,15 +42,22 @@ public class Matrix extends JPanel {
 		undo = new JButton("Undo!");
 		setLayout(i_hate_gui_java);
 		matrix=new JLabel[SIZE][SIZE];
-		
+		int value;
 		for (int i = 0; i < matrix.length; i++) 
 		{
 			for (int j = 0; j < matrix.length; j++) 
 			{
 			 	
-			 	 
-				matrix[i][j] = new JLabel(""+logic_matrix.getValue(i, j),JLabel.CENTER);
-				matrix[i][j].setOpaque(true);
+				value=logic_matrix.getValue(i, j);
+				if(value==0)
+				{
+					matrix[i][j] = new JLabel("",JLabel.CENTER);
+				}
+				else {
+					matrix[i][j] = new JLabel(""+value,JLabel.CENTER);
+				}
+			 			 
+			 	matrix[i][j].setOpaque(true);
 				matrix[i][j].setPreferredSize(new Dimension(100,100));
 				matrix[i][j].setFont(new Font(matrix[i][j].getFont().getName(), matrix[i][j].getFont().getStyle(), 30));
 				matrix[i][j].setBackground(Color.WHITE);
@@ -84,13 +91,16 @@ public class Matrix extends JPanel {
 		undo.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
- 				
+ 				int value;
 				for (int i = 0; i < matrix.length; i++) 
 				{
 					for (int j = 0; j < matrix.length; j++) 
 					{
-
-						matrix[i][j].setText(""+logic_matrix.getValue(i, j));
+						value=logic_matrix.getValue(i, j);
+						  if(value==0) 
+						   {
+							  matrix[i][j].setText("");
+						   }
 					}
 				}
 		
