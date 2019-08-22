@@ -41,10 +41,10 @@ public class LogicMatrix {
 		
 	}
 
-
+private boolean any_sum;
 	public int[][] sumMatrix(Direction d)
 	{
-	
+	    any_sum=false;
 		saveMatrix();
 		
 		if(d==Direction.RIGHT)
@@ -64,9 +64,10 @@ public class LogicMatrix {
 		{
 		  direzioneVersoIlbasso();	
 		}
+		if(any_sum!=false) {
 		generateValue();
-		
-		print();
+		}
+		print();//TODO DA ELIMINARE
 		System.out.println();
 	 return current_matrix;
 	}
@@ -146,10 +147,12 @@ public void undo()
 
 //funzioni private 	
 
-//********************** direzione verso L'alto ***************************	
+//********************** direzione verso il basso ***************************	
+private boolean any_move=false;
 
 private void direzioneVersoIlbasso() 	
 {
+	any_move=false;
 	for (int j = 0; j <current_matrix.length ; j++) 
 	{
 		int indice_inserimento=current_matrix.length-1;
@@ -164,11 +167,13 @@ private void direzioneVersoIlbasso()
 					 daSommare=current_matrix[i][j];
 						 if(indice_inserimento !=i)
 						 {  
+							 any_move=true;
 							 current_matrix[indice_inserimento][j]=current_matrix[i][j];
 							 current_matrix[i][j]=0;
 					     }
 				 }else if(current_matrix[i][j] == daSommare && daSommare!=0)
 				 {
+					 any_sum=true;
                      current_matrix[indice_inserimento][j]+=daSommare;
                      current_matrix[i][j]=0;
                      daSommare=0;
@@ -179,17 +184,21 @@ private void direzioneVersoIlbasso()
 					 indice_inserimento--;
 					 if(indice_inserimento !=i)
 				     { 
+						 any_move=true;
                        current_matrix[indice_inserimento][j]=current_matrix[i][j];
                        current_matrix[i][j]=0;
 				     }
                      daSommare=current_matrix[indice_inserimento][j];
                   }	 
 				  
-				 
 
 			 }//if!=0
 		}//for j
 	}//for i
+	if(any_move== true && any_sum ==false)
+	{
+		any_sum=true;
+	}
 }
 
 
@@ -197,7 +206,7 @@ private void direzioneVersoIlbasso()
 //********************** direzione verso L'alto ***************************	
 
 private void direzioneVersoSU() {
-	
+	any_move=false;
 	for (int j = 0; j < current_matrix.length; j++) 
 	{
 		int indice_inserimento=0;
@@ -211,11 +220,13 @@ private void direzioneVersoSU() {
 					 daSommare=current_matrix[i][j];
 					 if(indice_inserimento !=i)
 					 {  
+						 any_move=true;
 						 current_matrix[indice_inserimento][j]=current_matrix[i][j];
 						 current_matrix[i][j]=0;
 				     }
 				 }else if(current_matrix[i][j] == daSommare && daSommare!=0)
 				   {
+					 any_sum=true;
                      current_matrix[indice_inserimento][j]+=daSommare;
                      current_matrix[i][j]=0;
                      daSommare=0;
@@ -226,16 +237,20 @@ private void direzioneVersoSU() {
 					 indice_inserimento++;
 					 if(indice_inserimento !=i)
 				     { 
+						 any_move=true;
 					   current_matrix[indice_inserimento][j]=current_matrix[i][j];
                        current_matrix[i][j]=0;
 				     } 
-                     daSommare=current_matrix[indice_inserimento][i];
+                     daSommare=current_matrix[indice_inserimento][j];
                   }	 
 
 			 }//if!=0
 		}//for j
 	}//for i
-	
+	if(any_move== true && any_sum ==false)
+	{
+		any_sum=true;
+	}
 }
 
 
@@ -243,7 +258,7 @@ private void direzioneVersoSU() {
 
 private void direzioneVersoSinistra() 
 {
-	
+	any_move=false;
 	for (int i = 0; i < current_matrix.length; i++) 
 	{
 		int indice_inserimento=0;
@@ -256,11 +271,13 @@ private void direzioneVersoSinistra()
 					 daSommare=current_matrix[i][j];
 					 if(indice_inserimento !=j)
 					 {  
+						 any_move=true;
 						 current_matrix[i][indice_inserimento]=current_matrix[i][j];
 						 current_matrix[i][j]=0;
 				     }
 				 }else if(current_matrix[i][j] == daSommare && daSommare!=0)
 				   {
+					 any_sum=true;
                      current_matrix[i][indice_inserimento]+=daSommare;
                      current_matrix[i][j]=0;
                      daSommare=0;
@@ -271,6 +288,7 @@ private void direzioneVersoSinistra()
 					 indice_inserimento++;
 					 if(indice_inserimento !=j)
 				     { 
+						 any_move=true;
                        current_matrix[i][indice_inserimento]=current_matrix[i][j];
                        current_matrix[i][j]=0;
 				     }
@@ -281,14 +299,17 @@ private void direzioneVersoSinistra()
 		}//for j
 	}//for i
 	
-	
+	if(any_move== true && any_sum ==false)
+	{
+		any_sum=true;
+	}
 }
 
 
 //********************** direzione verso destra ***************************	
 private void direzioneVersoDestra()
 	{
-		
+	any_move=false;	
 		for (int i = 0; i < current_matrix.length; i++) 
 		{
 			int indice_inserimento=current_matrix.length-1;
@@ -303,11 +324,13 @@ private void direzioneVersoDestra()
 						 daSommare=current_matrix[i][j];
   						 if(indice_inserimento !=j)
   						 {  
+  							 any_move=true;
   							 current_matrix[i][indice_inserimento]=current_matrix[i][j];
   							 current_matrix[i][j]=0;
   					     }
 					 }else if(current_matrix[i][j] == daSommare && daSommare!=0)
 					 {
+						 any_sum=true;
                          current_matrix[i][indice_inserimento]+=daSommare;
                          current_matrix[i][j]=0;
                          daSommare=0;
@@ -317,7 +340,8 @@ private void direzioneVersoDestra()
 					 {
 						 indice_inserimento--;
 						 if(indice_inserimento !=j)
-  						 {  
+  						 {
+						 any_move=true;
                          current_matrix[i][indice_inserimento]=current_matrix[i][j];
                          current_matrix[i][j]=0;
   						 }
@@ -329,7 +353,10 @@ private void direzioneVersoDestra()
 				 }//if!=0
 			}//for j
 		}//for i
-
+		if(any_move== true && any_sum ==false)
+		{
+			any_sum=true;
+		}
 
 	}
    
