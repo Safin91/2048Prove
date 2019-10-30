@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import IAProject.IA;
 import Logic_Project.LogicMatrix;
 import Logic_Project.LogicMatrix.Direction;
 
@@ -27,8 +28,20 @@ public class Matrix extends JPanel {
 	private JButton undo;
 	private GridLayout i_hate_gui_java;
 	private LogicMatrix logic_matrix;
+    private IA ia;
+    
+    
+    
+	public LogicMatrix getLogic_matrix() {
+		return logic_matrix;
+	}
+
+	public void setLogic_matrix(LogicMatrix logic_matrix) {
+		this.logic_matrix = logic_matrix;
+	}
 
 	public Matrix() {
+		ia = new IA(this);
 		logic_matrix = new LogicMatrix();
 		SIZE = logic_matrix.size;
 
@@ -120,7 +133,7 @@ public class Matrix extends JPanel {
 						  repaint();
 					}
 				}
-		
+		    
 			updateUI();
 			}
 		}); 
@@ -136,7 +149,12 @@ public class Matrix extends JPanel {
 		} else if (c == 'r') {
 			logic_matrix.sumMatrix(Direction.RIGHT);
 		}
-
+        
+		//TODO DA ELIMINARE
+		ia.start();
+        ia.execute();
+        
+        
 		scriviMarice();
 		repaint();
 		updateUI();

@@ -1,8 +1,6 @@
 package Logic_Project;
 
-import GUI_Project.Matrix;
-import GUI_Project.Window;
-import Logic_Project.LogicMatrix.Direction;
+import GUI_Project.*;
 
 public class main1 {
 
@@ -10,7 +8,7 @@ public class main1 {
 	
 	//	Matrix matrix =new Matrix ();
 
-		Window window = new Window ();
+		Window window = new Window();
 	
         
 	 	
