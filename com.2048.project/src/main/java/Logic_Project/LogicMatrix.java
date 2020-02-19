@@ -55,7 +55,8 @@ public class LogicMatrix {
 		future_direzioni.add(direzioneVersoSUGeneraMatrice(copy));
 		future_direzioni.add(direzioneVersoSinistra(copy));
 		future_direzioni.add(direzioneVersoDestraMatrice(copy));
-
+		future_direzioni.add(copy); //inserisco la matrice corrente in ultima posizione quindi posizione4 
+		
 		for (int i = 0; i < current_matrix.length; i++) {
 			for (int j = 0; j < current_matrix.length; j++) {
 				undo_matrix[i][j] = current_matrix[i][j] ;
@@ -126,11 +127,16 @@ public void print() {
 
     prova_stampa=generaMatrici(Direction.RIGHT);
     da_stampare.add(prova_stampa);
-   
+    
+    
+    da_stampare.add(current_matrix);// TODO potenziali problemi...
+    
+    
 future_direzioni.set(0, da_stampare.get(0)); //0 giu
 future_direzioni.set(1, da_stampare.get(1)); //1 su
 future_direzioni.set(2, da_stampare.get(2)); //2 left
 future_direzioni.set(3, da_stampare.get(3)); //3 right
+future_direzioni.set(4, da_stampare.get(4)); //precedente
 
 
 
